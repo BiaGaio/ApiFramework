@@ -6,12 +6,13 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class MoviesService {
-
+  // Usamos s/apikey para exemplo; você deve substituir por sua chave OMDB se necessário.
   private apiUrl = 'https://www.omdbapi.com/?apikey=564727fa&t=';
 
   constructor(private http: HttpClient) {}
 
   buscarFilme(titulo: string): Observable<any> {
-    return this.http.get(this.apiUrl + titulo);
+    // encodeURIComponent para evitar espaços/acentos quebrando a URL
+    return this.http.get(this.apiUrl + encodeURIComponent(titulo));
   }
 }

@@ -1,0 +1,15 @@
+<h1>{{ titulo }}</h1>
+
+<input #t type="text" placeholder="Título do filme" (keyup.enter)="buscar(t.value)" />
+<button (click)="buscar(t.value)">Buscar</button>
+
+<p *ngIf="erro" style="color:darkred">{{ erro }}</p>
+
+<div *ngIf="filme">
+  <h2>{{ filme.Title || filme.title }}</h2>
+  <p><strong>Ano:</strong> {{ filme.Year || filme.year }}</p>
+  <p><strong>Diretor:</strong> {{ filme.Director || filme.director }}</p>
+  <p><strong>Plot:</strong> {{ filme.Plot || filme.plot }}</p>
+  <img *ngIf="filme.Poster" [src]="filme.Poster" alt="Poster" style="max-width:200px" />
+  
+</div>
